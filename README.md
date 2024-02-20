@@ -178,7 +178,18 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 # Additional Context
 
-- [ ] Describe any novel or unique curve logic or mathematical models implemented in the contracts
+- [ ] Describe any novel or unique curve logic or mathematical models implemented in the contracts:
+
+Our implementation of TapiocaDAO's tw, otherwise known as Time Weighted Average Magnitude Lock. 
+
+tw is a mechanism proposed as a solution for promoting sustainable economic growth for a decentralized finance ecosystem, while maintaining economic alignment among its participants. 
+
+tw addresses issues created by the prevailing practice of liquidity mining, which results in small groups of opportunistic capital providers motivated solely by profit capturing all benefits at the expense of all other actors. 
+
+tw was designed with game theory concepts to reach subgame perfect Nash equilibria, in contrast with liquidity mining where Nash equilibrium cannot be reached due to the presence of a dominant strategy
+
+Read more about twAML at: https://www.tapioca.xyz/docs/twAML.pdf
+
 - [ ] Please list specific ERC20 that your protocol is anticipated to interact with. Could be "any" (literally anything, fee on transfer tokens, ERC777 tokens and so forth) or a list of tokens you envision using on launch.
 - [ ] Please list specific ERC721 that your protocol is anticipated to interact with.
 - [ ] Which blockchains will this code be deployed to, and are considered in scope for this audit?
