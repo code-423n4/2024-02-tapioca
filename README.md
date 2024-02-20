@@ -194,6 +194,14 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 ## Main invariants
 *Describe the project's main invariants (properties that should NEVER EVER be broken).*
 
+*twAML Invariants*
+- No lock can be created and unlocked in the same block
+- No lock can be created and unlocked before its (original, uint256) duration has expired.
+- Given a small amount of dust, I can never reach X multiple.
+- I can never lock for longer than X (intended soft max cap enforced by math if not added via require).
+- The sum of all balances at a given epoch, is the sum of all active locks.
+- If I could have unlocked at epoch X, then the totalSum of Balances at epoch X reflects that.
+
 ## Scoping Details 
 [ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
