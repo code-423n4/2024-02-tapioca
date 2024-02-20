@@ -89,6 +89,8 @@ Please review the following confidentiality requirements carefully, and if anyth
 The 4naly3er report can be found [here](https://github.com/code-423n4/2024-02-tapioca-dao/blob/main/4naly3er-report.md).
 
 
+Prior audits can be viewed [here](https://docs.tapioca.xyz/tapioca/information/audits-and-partners), and the contents of these are also considered known issues and ineligible for awards. It is recommended that wardens read both Certora reports for helpful context. 
+
 
 _Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
 
@@ -97,15 +99,31 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 # Overview
 
-[ ⭐️ SPONSORS: add info here ]
+The Tapioca protocol is built with a lot of different smart contracts, scattered across 5 repositories.
+It's an _Omnichain_ protocol working the LayerZero messaging layer. At its core, Tapioca ERC20/ERC721 contracts uses the LayerZero contracts and infrastructure.
+
+
+The other repos are here to support the ecosystem as well as to create a synergy between the tokenemics and the protocol features.
+
+* [TapiocaBar](https://github.com/Tapioca-DAO/Tapioca-bar) Core logic of the protocol. This is where `USDO` gets minted and lent.
+* [tapiocaz](https://github.com/Tapioca-DAO/TapiocaZ) Contracts that contains a wrapper named `TOFT`, which is used to wrap gas tokens and transfer allow their usage through the LayerZero network.
+* [YieldBox](https://github.com/Tapioca-DAO/tap-yieldbox) A "BentoBox v2". Acts as a vault, that allow for yield strategies to be applied on the asset.
+* [yieldbox-strategies](https://github.com/Tapioca-DAO/tapioca-yieldbox-strategies) Yield strategies that will be used by a YieldBox asset.
+
+
+
+# Notes
+- The docs provide a lot of information about the protocol and the user flow, given the size of the protocol, we encourage checking it at https://docs.tapioca.xyz/tapioca/.
+
+
 
 ## Links
 
-- **Previous audits:** 
-- **Documentation:**
-- **Website:**
-- **Twitter:** 
-- **Discord:** 
+- **Previous audits: https://docs.tapioca.xyz/tapioca/information/security-and-integrations#audits** 
+- **Documentation: https://docs.tapioca.xyz/tapioca**
+- **Website: https://www.tapioca.xyz**
+- **Twitter: https://twitter.com/tapioca_dao** 
+- **Discord: https://discord.com/invite/tapiocadao** 
 
 
 # Scope
@@ -174,9 +192,16 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 ## Out of scope
 
-*List any files/contracts that are out of scope for this audit.*
+Contract marked by `// External`, which all are `node_modules/` external pacakages.
 
 # Additional Context
+
+- twAML is a simple model that is used in `twTAP` and `TapiocaOptionBroker`. A detailed explanation of how it works can be found [here](https://docs.tapioca.xyz/tapioca/core-technologies/twaml).
+- An EIP2612 integration for an ERC721 was used.
+- `transferFrom` should be assumed to always be used with the `Pearlmit` (Uniswap's `permit2` alike) contract, instead of the actual token's `transferFrom`.
+- LayerZero composed calls are supposed to be called on independent transactions given sequential indexes. However for security purposed, all composed calls will be executed in a single transaction.
+- The blockchains that should be assumed for this contest are: `Arbitrum, Ethereum, Optimism, Avalanche`.
+- In the event of a DoS, the duration would be 8 hours.
 
 - [ ] Describe any novel or unique curve logic or mathematical models implemented in the contracts
 - [ ] Please list specific ERC20 that your protocol is anticipated to interact with. Could be "any" (literally anything, fee on transfer tokens, ERC777 tokens and so forth) or a list of tokens you envision using on launch.
@@ -206,23 +231,23 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 [ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
 ```
-- If you have a public code repo, please share it here:  
-- How many contracts are in scope?:   16
-- Total SLoC for these contracts?:  750
-- How many external imports are there?: 4 
-- How many separate interfaces and struct definitions are there for the contracts within scope?:  4
-- Does most of your code generally use composition or inheritance?:   Inheritance
-- How many external calls?:   1
-- What is the overall line coverage percentage provided by your tests?: 100
-- Is this an upgrade of an existing system?: False
-- Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): 
-- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?:   Yes
-- Please describe required context:  Fees are collected from individual uniswap v3 pools via a function on one of the new contracts. That function calls the 'collectProtocol' function on pool contracts.
-- Does it use an oracle?:  No
-- Describe any novel or unique curve logic or mathematical models your code uses: N/A
-- Is this either a fork of or an alternate implementation of another project?:   True
-- Does it use a side-chain?:
-- Describe any specific areas you would like addressed:
+- If you have a public code repo, please share it here:  N/A
+- How many contracts are in scope?: 42
+- Total nSLoC for these contracts?:  4207
+- How many external imports are there?: N/A 
+- How many separate interfaces and struct definitions are there for the contracts within scope?:
+- Does most of your code generally use composition or inheritance?: Inheritance.
+- How many external calls?: 
+- What is the overall line coverage percentage provided by your tests?: ~70%.
+- Is this an upgrade of an existing system?: False.
+- Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): Timelock, NFT, ERC20.
+- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?: Yes
+- Please describe required context: Some functions in `tapioca-periph/Magnetar` contract targets another repository, which is `tapioca-bar`.
+- Does it use an oracle?: Yes. Oracles can be found in `tapioca-periph/oracle`.
+- Describe any novel or unique curve logic or mathematical models your code uses: twAMl. Explained above.
+- Is this either a fork of or an alternate implementation of another project?: False.
+- Does it use a side-chain?: N/A
+- Describe any specific areas you would like addressed: N/A
 ```
 
 # Tests
