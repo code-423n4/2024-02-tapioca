@@ -59,14 +59,11 @@ Some of the checklists in this doc are for **C4 (🐺)** and some of them are fo
 ---
 
 # Tapioca DAO audit details
-- Total Prize Pool: $138000 in USDC
-  - HM awards: $119450 in USDC
- 
-  - QA awards: $2775 in USDC
- 
-  - Gas awards: $2775 in USDC
-  - Judge awards: $12500 in USDC
-  - Lookout awards: XXX XXX USDC (Notion: Sum of Pre-sort fee + Pre-sort early bonus)
+- Total Prize Pool: $138,000 in USDC
+  - HM awards: $119,450 in USDC
+  - QA awards: $2,775 in USDC
+  - Gas awards: $2,775 in USDC
+  - Judge awards: $12,500 in USDC
   - Scout awards: $500 in USDC
  
 - Join [C4 Discord](https://discord.gg/code4rena) to register
