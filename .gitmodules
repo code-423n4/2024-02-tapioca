@@ -1,0 +1,6 @@
+[submodule "tapioca-periph"]
+	path = tapioca-periph
+	url = https://github.com/Tapioca-DAO/tapioca-periph
+[submodule "tap-token"]
+	path = tap-token
+	url = https://github.com/Tapioca-DAO/tap-token
