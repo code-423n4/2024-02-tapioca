@@ -58,7 +58,7 @@ Some of the checklists in this doc are for **C4 (🐺)** and some of them are fo
 
 ---
 
-# Tapioca DAO audit details
+# Tapioca DAO Invitational audit details
 - Total Prize Pool: $138,000 in USDC
   - HM awards: $119,450 in USDC
   - QA awards: $2,775 in USDC
@@ -83,7 +83,6 @@ This audit repo and its Discord channel are accessible to **certified wardens on
 
 Please review the following confidentiality requirements carefully, and if anything is unclear, ask questions in the private audit channel in the C4 Discord.
 
->>DRAG IN CLASSIFIED IMAGE HERE
 
 ## Automated Findings / Publicly Known Issues
 
@@ -151,20 +150,20 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 ```
 - If you have a public code repo, please share it here:  
-- How many contracts are in scope?:   
-- Total SLoC for these contracts?:  
-- How many external imports are there?:  
-- How many separate interfaces and struct definitions are there for the contracts within scope?:  
-- Does most of your code generally use composition or inheritance?:   
-- How many external calls?:   
-- What is the overall line coverage percentage provided by your tests?:
-- Is this an upgrade of an existing system?:
+- How many contracts are in scope?:   16
+- Total SLoC for these contracts?:  750
+- How many external imports are there?: 4 
+- How many separate interfaces and struct definitions are there for the contracts within scope?:  4
+- Does most of your code generally use composition or inheritance?:   Inheritance
+- How many external calls?:   1
+- What is the overall line coverage percentage provided by your tests?: 100
+- Is this an upgrade of an existing system?: False
 - Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): 
-- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?:   
-- Please describe required context:   
-- Does it use an oracle?:  
-- Describe any novel or unique curve logic or mathematical models your code uses: 
-- Is this either a fork of or an alternate implementation of another project?:   
+- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?:   Yes
+- Please describe required context:  Fees are collected from individual uniswap v3 pools via a function on one of the new contracts. That function calls the 'collectProtocol' function on pool contracts.
+- Does it use an oracle?:  No
+- Describe any novel or unique curve logic or mathematical models your code uses: N/A
+- Is this either a fork of or an alternate implementation of another project?:   True
 - Does it use a side-chain?:
 - Describe any specific areas you would like addressed:
 ```
