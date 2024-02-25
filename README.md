@@ -10,8 +10,8 @@
 - Join [C4 Discord](https://discord.gg/code4rena) to register
 - Submit findings [using the C4 form](https://code4rena.com/contests/2024-02-tapioca-invitational/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
-- Starts February 21, 2024 20:00 UTC
-- Ends March 13, 2024 20:00 UTC
+- Starts February 26, 2024 20:00 UTC
+- Ends March 18, 2024 20:00 UTC
 
 ## This is a Private audit
 
