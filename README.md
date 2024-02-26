@@ -1,12 +1,13 @@
 
 # Tapioca DAO Invitational audit details
+
 - Total Prize Pool: $138,000 in USDC
   - HM awards: $119,450 in USDC
   - QA awards: $2,775 in USDC
   - Gas awards: $2,775 in USDC
   - Judge awards: $12,500 in USDC
   - Scout awards: $500 in USDC
- 
+
 - Join [C4 Discord](https://discord.gg/code4rena) to register
 - Submit findings [using the C4 form](https://code4rena.com/contests/2024-02-tapioca-invitational/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
@@ -24,60 +25,44 @@ This audit repo and its Discord channel are accessible to **certified wardens on
 
 Please review the following confidentiality requirements carefully, and if anything is unclear, ask questions in the private audit channel in the C4 Discord.
 
-
 ## Automated Findings / Publicly Known Issues
 
-The 4naly3er report can be found [here](https://github.com/code-423n4/2024-02-tapioca-dao/blob/main/4naly3er-report.md).
+The 4naly3er report for `tap-token` can be found [here](https://github.com/code-423n4/2024-02-tapioca-dao/blob/main/4naly3er-report-tap-token.md).
 
+Prior audits can be viewed [here](https://docs.tapioca.xyz/tapioca/information/audits-and-partners), and the contents of these are also considered known issues and ineligible for awards. It is recommended that wardens read both Certora reports for helpful context.
 
-Prior audits can be viewed [here](https://docs.tapioca.xyz/tapioca/information/audits-and-partners), and the contents of these are also considered known issues and ineligible for awards. It is recommended that wardens read both Certora reports for helpful context. 
-
-
-_Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
-
-[ ⭐️ SPONSORS: Are there any known issues or risks deemed acceptable that shouldn't lead to a valid finding? If so, list them here. ]
-
+*Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards.*
 
 # Overview
 
 The Tapioca protocol is built with a lot of different smart contracts, scattered across 5 repositories.
-It's an _Omnichain_ protocol working the LayerZero messaging layer. At its core, Tapioca ERC20/ERC721 contracts uses the LayerZero contracts and infrastructure.
+It's an *Omnichain* protocol working the LayerZero messaging layer. At its core, Tapioca ERC20/ERC721 contracts uses the LayerZero contracts and infrastructure.
 
+The other repos are here to support the ecosystem as well as to create a synergy between the tokenomics and the protocol features.
 
-The other repos are here to support the ecosystem as well as to create a synergy between the tokenemics and the protocol features.
-
-* [TapiocaBar](https://github.com/Tapioca-DAO/Tapioca-bar) Core logic of the protocol. This is where `USDO` gets minted and lent.
-* [tapiocaz](https://github.com/Tapioca-DAO/TapiocaZ) Contracts that contains a wrapper named `TOFT`, which is used to wrap gas tokens and transfer allow their usage through the LayerZero network.
-* [YieldBox](https://github.com/Tapioca-DAO/tap-yieldbox) A "BentoBox v2". Acts as a vault, that allow for yield strategies to be applied on the asset.
-* [yieldbox-strategies](https://github.com/Tapioca-DAO/tapioca-yieldbox-strategies) Yield strategies that will be used by a YieldBox asset.
-
-
+- [TapiocaBar](https://github.com/Tapioca-DAO/Tapioca-bar) Core logic of the protocol. This is where `USDO` gets minted and lent.
+- [tapiocaz](https://github.com/Tapioca-DAO/TapiocaZ) Contracts that contains a wrapper named `TOFT`, which is used to wrap gas tokens and transfer allow their usage through the LayerZero network.
+- [YieldBox](https://github.com/Tapioca-DAO/tap-yieldbox) A "BentoBox v2". Acts as a vault, that allow for yield strategies to be applied on the asset.
+- [yieldbox-strategies](https://github.com/Tapioca-DAO/tapioca-yieldbox-strategies) Yield strategies that will be used by a YieldBox asset.
 
 # Notes
-- The docs provide a lot of information about the protocol and the user flow, given the size of the protocol, we encourage checking it at https://docs.tapioca.xyz/tapioca/.
 
-
+- The docs provide a lot of information about the protocol and the user flow, given the size of the protocol, we encourage checking it at <https://docs.tapioca.xyz/tapioca/>.
 
 ## Links
 
-- **Previous audits: https://docs.tapioca.xyz/tapioca/information/security-and-integrations#audits** 
-- **Documentation: https://docs.tapioca.xyz/tapioca**
-- **Website: https://www.tapioca.xyz**
-- **Twitter: https://twitter.com/tapioca_dao** 
-- **Discord: https://discord.com/invite/tapiocadao** 
-
+- **Previous audits: <https://docs.tapioca.xyz/tapioca/information/security-and-integrations#audits>**
+- **Documentation: <https://docs.tapioca.xyz/tapioca>**
+- **Website: <https://www.tapioca.xyz>**
+- **Twitter: <https://twitter.com/tapioca_dao>**
+- **Discord: <https://discord.com/invite/tapiocadao>**
 
 # Scope
 
-[ ⭐️ SPONSORS: add scoping and technical details here ]
-
-- [ ] In the table format shown below, provide the name of each contract and:
-  - [ ] source lines of code (excluding blank lines and comments) in each *For line of code counts, we recommend running prettier with a 100-character line length, and using [cloc](https://github.com/AlDanial/cloc).* 
-  - [ ] external contracts called in each
-  - [ ] libraries used in each
-
+See [scope.txt](https://github.com/code-423n4/2024-02-tapioca/blob/main/scope.txt)
 
 ### tap-token
+
 | Type     | File                                                    | Description                                                                                           | nSLOC    | Complex. Score | Capabilities                                                                                                                                                                                                                                                 |
 |----------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------|----------|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 📝       | ./contracts/erc721NftLoader/ERC721NftLoader.sol         | Load URIs for ERC721 contracts.                                                                       | 19       | 19             | ****                                                                                                                                                                                                                                                         |
@@ -88,7 +73,7 @@ The other repos are here to support the ecosystem as well as to create a synergy
 | 📝       | ./contracts/options/TapiocaOptionBroker.sol             | `oTAP` minter. Users can participate by locking `Singularity` positions, receive and exercise `oTAP`. | 356      | 254            | **<abbr title='Unchecked Blocks'>Σ</abbr>**                                                                                                                                                                                                                  |
 | 📝       | ./contracts/options/TapiocaOptionLiquidityProvision.sol | Middleman contract for TapiocaOptionBroker. Users can create Singularity lock.                        | 230      | 185            | **<abbr title='Initiates ETH Value Transfer'>📤</abbr><abbr title='Unchecked Blocks'>Σ</abbr>**                                                                                                                                                              |
 | 📝       | ./contracts/options/oTAP.sol                            | Option TAP.                                                                                           | 54       | 45             | ****                                                                                                                                                                                                                                                         |
-| 🎨       | ./contracts/options/twAML.sol                           | Math logic for `AirdropBroker` and `twTAP`.	                                                          | 79       | 109            | **<abbr title='Uses Assembly'>🖥</abbr><abbr title='Unchecked Blocks'>Σ</abbr>**                                                                                                                                                                             |
+| 🎨       | ./contracts/options/twAML.sol                           | Math logic for `AirdropBroker` and `twTAP`.                                                           | 79       | 109            | **<abbr title='Uses Assembly'>🖥</abbr><abbr title='Unchecked Blocks'>Σ</abbr>**                                                                                                                                                                             |
 | 🎨       | ./contracts/tokens/BaseTapToken.sol                     |                                                                                                       | 19       | 16             | ****                                                                                                                                                                                                                                                         |
 | 🎨       | ./contracts/tokens/BaseTapTokenMsgType.sol              |                                                                                                       | 6        | 4              | ****                                                                                                                                                                                                                                                         |
 | 📝       | ./contracts/tokens/TapToken.sol                         | `$TAP` contract. Inherit from `TapiocaOmnichainEngine`.                                               | 186      | 163            | **<abbr title='Payable Functions'>💰</abbr><abbr title='Uses Hash-Functions'>🧮</abbr>**                                                                                                                                                                     |
@@ -100,8 +85,8 @@ The other repos are here to support the ecosystem as well as to create a synergy
 | 🎨       | ./contracts/tokens/module/ModuleManager.sol             | Modularize `TapToken` contract into multiple contracts, called by delegate calls.                     | 29       | 19             | **<abbr title='Uses Assembly'>🖥</abbr><abbr title='DelegateCall'>👥</abbr>**                                                                                                                                                                                |
 | 📝📚🔍🎨 | **Totals**                                              |                                                                                                       | **2052** | **1500**       | **<abbr title='Uses Assembly'>🖥</abbr><abbr title='Payable Functions'>💰</abbr><abbr title='Initiates ETH Value Transfer'>📤</abbr><abbr title='DelegateCall'>👥</abbr><abbr title='Uses Hash-Functions'>🧮</abbr><abbr title='Unchecked Blocks'>Σ</abbr>** |
 
-
 ### tapioca-periph
+
 | Type     | File                                                                          | Description                                                                                                                                          | nSLOC    | Complex. Score | Capabilities                                                                                                                                                                                                                                                                                       |
 |----------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 📝       | ./contracts/Cluster/Cluster.sol                                               | Whiteliste addresses from different LayerZero supported chains.                                                                                      | 55       | 38             | ****                                                                                                                                                                                                                                                                                               |
@@ -130,22 +115,22 @@ The other repos are here to support the ecosystem as well as to create a synergy
 | 🎨       | ./contracts/utils/ERC721Permit.sol                                            | EIP2612 on ERC721.                                                                                                                                   | 33       | 30             | **<abbr title='Uses Hash-Functions'>🧮</abbr>**                                                                                                                                                                                                                                                    |
 | 📝📚🔍🎨 | **Totals**                                                                    |                                                                                                                                                      | **2206** | **1401**       | **<abbr title='Uses Assembly'>🖥</abbr><abbr title='Payable Functions'>💰</abbr><abbr title='Initiates ETH Value Transfer'>📤</abbr><abbr title='DelegateCall'>👥</abbr><abbr title='Uses Hash-Functions'>🧮</abbr><abbr title='create/create2'>🌀</abbr><abbr title='Unchecked Blocks'>Σ</abbr>** |
 
-
 ## Out of scope
 
 Contract marked by `// External`, which all are `node_modules/` external pacakages.
 
 # Additional Context
 
-Our implementation of TapiocaDAO's tw, otherwise known as Time Weighted Average Magnitude Lock. 
-tw is a mechanism proposed as a solution for promoting sustainable economic growth for a decentralized finance ecosystem, while maintaining economic alignment among its participants. 
+Our implementation of TapiocaDAO's tw, otherwise known as Time Weighted Average Magnitude Lock.
+tw is a mechanism proposed as a solution for promoting sustainable economic growth for a decentralized finance ecosystem, while maintaining economic alignment among its participants.
 
-tw addresses issues created by the prevailing practice of liquidity mining, which results in small groups of opportunistic capital providers motivated solely by profit capturing all benefits at the expense of all other actors. 
+tw addresses issues created by the prevailing practice of liquidity mining, which results in small groups of opportunistic capital providers motivated solely by profit capturing all benefits at the expense of all other actors.
 tw was designed with game theory concepts to reach subgame perfect Nash equilibria, in contrast with liquidity mining where Nash equilibrium cannot be reached due to the presence of a dominant strategy
 
-Read more about twAML at: https://www.tapioca.xyz/docs/twAML.pdf
+Read more about twAML at: <https://www.tapioca.xyz/docs/twAML.pdf>
 
-Miscellaneous: 
+Miscellaneous:
+
 - An EIP2612 integration for an ERC721 was used.
 - `transferFrom` should be assumed to always be used with the `Pearlmit` (Uniswap's `permit2` alike) contract, instead of the actual token's `transferFrom`.
 - LayerZero composed calls are supposed to be called on independent transactions given sequential indexes. However for security purposed, all composed calls will be executed in a single transaction.
@@ -157,17 +142,14 @@ Miscellaneous:
 - [ ] Which blockchains will this code be deployed to, and are considered in scope for this audit?
 - [ ] Please list all trusted roles (e.g. operators, slashers, pausers, etc.), the privileges they hold, and any conditions under which privilege escalation is expected/allowable
 - [ ] In the event of a DOS, could you outline a minimum duration after which you would consider a finding to be valid? This question is asked in the context of most systems' capacity to handle DoS attacks gracefully for a certain period.
-- [ ] Is any part of your implementation intended to conform to any EIP's? If yes, please list the contracts in this format: 
+- [ ] Is any part of your implementation intended to conform to any EIP's? If yes, please list the contracts in this format:
   - `Contract1`: Should comply with `ERC/EIPX`
   - `Contract2`: Should comply with `ERC/EIPY`
 
-## Attack ideas (Where to look for bugs)
-*List specific areas to address - see [this blog post](https://medium.com/code4rena/the-security-council-elections-within-the-arbitrum-dao-a-comprehensive-guide-aa6d001aae60#9adb) for an example*
-
 ## Main invariants
-*Describe the project's main invariants (properties that should NEVER EVER be broken).*
 
 *twAML Invariants*
+
 - No lock can be created and unlocked in the same block
 - No lock can be created and unlocked before its (original, uint256) duration has expired.
 - Given a small amount of dust, I can never reach X multiple.
@@ -175,8 +157,7 @@ Miscellaneous:
 - The sum of all balances at a given epoch, is the sum of all active locks.
 - If I could have unlocked at epoch X, then the totalSum of Balances at epoch X reflects that.
 
-## Scoping Details 
-[ ⭐️ SPONSORS: please confirm/edit the information below. ]
+## Scoping Details
 
 ```
 - If you have a public code repo, please share it here:  N/A
@@ -200,9 +181,28 @@ Miscellaneous:
 
 # Tests
 
-*Provide every step required to build the project from a fresh git clone, as well as steps to run the tests with a gas report.* 
+```bash
+# cloning without recurse
+git clone https://github.com/code-423n4/2024-02-tapioca.git
 
-*Note: Many wardens run Slither as a first pass for testing.  Please document any known errors with no workaround.* 
+# Root of the repo
+cd 2024-02-tapioca
+git submodule update --init
+
+# tapioca-periph
+cd tapioca-periph
+## Setup
+yarn && git submodule update --init && forge install
+## Tests
+forge test
+
+# tap-token
+cd ../tap-token
+## Setup
+yarn && git submodule update --init && forge install && cp -r ../tapioca-periph/ gitmodule/tapioca-periph/
+## Tests
+forge test
+```
 
 ## Miscellaneous
 
